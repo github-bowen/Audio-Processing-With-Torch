@@ -1,15 +1,15 @@
 # Codes and notes for learning audio operations with pytorch
 
-- Related Series in Youtube: [PyTorch for Audio + Music Processing](https://www.youtube.com/watch?v=gp2wZqDoJ1Y&t=2s)
+- Related Series in YouTube: [PyTorch for Audio + Music Processing](https://www.youtube.com/watch?v=gp2wZqDoJ1Y&t=2s)
 
-  Codes given by the author: [Github Repo](https://github.com/musikalkemist/pytorchforaudio)
+  Codes given by the author: [GitHub Repo](https://github.com/musikalkemist/pytorchforaudio)
 
 - Files / Directories Info (Listed in the order explained in the tutorial above):
 
   Directories:
 
   - `MNIST`: A dataset, auto downloaded in file `train.py`.
-  - `UrbanSound8K`: A dataset, downloaded from web site [URBANSOUND8K DATASET](https://urbansounddataset.weebly.com/urbansound8k.html)
+  - `UrbanSound8K`: A dataset, downloaded from website [URBANSOUND8K DATASET](https://urbansounddataset.weebly.com/urbansound8k.html)
 
   Files:
 
