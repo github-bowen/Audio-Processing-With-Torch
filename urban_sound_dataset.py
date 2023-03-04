@@ -27,3 +27,16 @@ class UrbanSoundDataset(Dataset):
 
     def _get_audio_sample_label(self, index):
         return self.annotations.iloc[index, 6]
+
+
+if __name__ == '__main__':
+    ANNOTATIONS_FILE = './UrbanSound8K/metadata/UrbanSound8K.csv'
+    AUDIO_DIR = './UrbanSound8K/audio'
+
+    urban_sound_dataset = UrbanSoundDataset(ANNOTATIONS_FILE, AUDIO_DIR)
+
+    print(f'There are {len(urban_sound_dataset)} samples in the dataset.')
+
+    print('The first audio file:')
+    signal, label = urban_sound_dataset[0]
+    print(f'Signal: {signal}\nShape of the signal: {signal.shape}\nLabel of the signal: {label}')
