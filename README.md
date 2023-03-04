@@ -18,9 +18,9 @@
   - `train.py`: Contains a class `FeedForwardNet` and functions `download_mnist_datasets`, `train_one_epoch` and `train` which are used for downloading MNIST dataset and training them using FeedForwardNet model.
   - `feedforwardnet.pth`: Model saved from `train.py`.
   - `inference.py`: Contains a function `predict` for validating the model `feedforwardnet.pth`.
-  - `urban_sound_dataset.py`: Contains a class `UrbanSoundDataset` for loading `.wav` sound file in urbansound8k dataset and get the waveform signals and sample rates of each audio.
+  - `urban_sound_dataset.py`: Contains a class `UrbanSoundDataset` for loading `.wav` sound file in urbansound8k dataset and get the waveform signals, sample rates and mel-spectorgrams of each audio.
 
-## Some Environments Problems
+## Some Environmental Problems
 
 - Get `RuntimeError: No audio I/O backend is available.` message while running code `torchaudio.load(audio_sample_path)` at file `urban_sound_dataset.py`:
 
@@ -29,6 +29,19 @@
   pip install SoundFile
   # or
   pip install sox
+  ```
+
+- Get error message below when plotting mel-spectrogram using matplotlib:
+
+  ```none
+   manager_pyplot_show = vars(manager_class).get("pyplot_show")
+  TypeError: vars() argument must have __dict__ attribute
+  ```
+
+  Solutions ([Stack Overflow](https://stackoverflow.com/questions/75453995/pandas-plot-vars-argument-must-have-dict-attribute)):
+
+  ```python
+  mpl.use('TkAgg')  # Add this code
   ```
 
   
