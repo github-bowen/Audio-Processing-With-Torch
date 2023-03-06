@@ -9,6 +9,11 @@ import matplotlib as mpl
 import numpy as np
 import matplotlib.ticker as mtick
 
+ANNOTATIONS_FILE = './UrbanSound8K/metadata/UrbanSound8K.csv'
+AUDIO_DIR = './UrbanSound8K/audio'
+SAMPLE_RATE = 22050
+NUM_SAMPLES = 22050
+
 
 class UrbanSoundDataset(Dataset):
 
@@ -51,7 +56,7 @@ class UrbanSoundDataset(Dataset):
         signal = self._right_pad_if_necessary(signal)
 
         transformed_signal = self.transformation(signal)
-        return signal, label, transformed_signal
+        return transformed_signal, label
 
     def _get_audio_sample_path(self, index):
         fold = f'fold{self.annotations.iloc[index, 5]}'
@@ -131,11 +136,6 @@ def check_device():
 
 
 if __name__ == '__main__':
-    ANNOTATIONS_FILE = './UrbanSound8K/metadata/UrbanSound8K.csv'
-    AUDIO_DIR = './UrbanSound8K/audio'
-    SAMPLE_RATE = 22050
-    NUM_SAMPLES = 22050
-
     device = check_device()
 
     mel_spectrogram = torchaudio.transforms.MelSpectrogram(
@@ -156,9 +156,9 @@ if __name__ == '__main__':
     print(f'There are {len(urban_sound_dataset)} samples in the dataset.')
 
     print('\nThe first audio file (after resampling and being mixed down):')
-    signal, label, mel_spectrogram = urban_sound_dataset[0]
-    print(f'Signal: {signal}')
-    print(f'Shape of the signal: {signal.shape}')
+    mel_spectrogram, label = urban_sound_dataset[0]
+    print(f'Mel_spectrogram (signal): {mel_spectrogram}')
+    print(f'Shape of the signal: {mel_spectrogram.shape}')
     print(f'Label of the signal: {label}\n')
 
     plot_spectrogram(mel_spectrogram)

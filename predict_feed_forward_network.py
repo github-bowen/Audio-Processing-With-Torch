@@ -1,6 +1,6 @@
 import torch
 from torch import Tensor
-from train import FeedForwardNet, download_mnist_datasets
+from train_fead_forward_network import FeedForwardNet, download_mnist_datasets
 
 class_mapping = [i for i in range(10)]  # index to class(target)
 
