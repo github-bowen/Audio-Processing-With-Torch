@@ -27,6 +27,7 @@
     - Use transforming function (here it's `mel_spectrogram`) to transform it.
   - `cnn.py`: A simple CNN model.
   - `train_cnn`: Use the model in `cnn.py` to train the urban sound dataset.
+  - `predict_cnn`: Predict the model in the same way of `predict_feed_forward_network.py`.
 
 ## Some Environmental Problems
 
