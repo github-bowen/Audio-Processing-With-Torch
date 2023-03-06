@@ -18,7 +18,13 @@
   - `train.py`: Contains a class `FeedForwardNet` and functions `download_mnist_datasets`, `train_one_epoch` and `train` which are used for downloading MNIST dataset and training them using FeedForwardNet model.
   - `feedforwardnet.pth`: Model saved from `train.py`.
   - `inference.py`: Contains a function `predict` for validating the model `feedforwardnet.pth`.
-  - `urban_sound_dataset.py`: Contains a class `UrbanSoundDataset` for loading `.wav` sound file in urbansound8k dataset and get the waveform signals, sample rates and mel-spectorgrams of each audio.
+  - `urban_sound_dataset.py`: Contains a class `UrbanSoundDataset` for loading `.wav` sound file in urbansound8k dataset and getting the waveform signals, sample rates and mel-spectorgrams of each audio. Serveral works are done in method `__getitem__`:
+    - Load the `.wav` audio file and get its waveform signal and sample rate.
+    - Resample the signal if the original sample rate is not equal to the target sample rate.
+    - Mix down multiple channels to moto.
+    - If the number of samples is more than the expected, apply cutting operation.
+    - if the number of samples is less than the expected, apply right padding operation.
+    - Use transforming function (here it's `mel_spectrogram`) to transform it.
 
 ## Some Environmental Problems
 
